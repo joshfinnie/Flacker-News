@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Flacker news</title>
+    <meta name="description" content="A Hacker News clone written in Python using the Flask micro-framework.">
+    <meta name="author" content="Josh Finnie">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css">
+    <style type="text/css">
+      html, body {
+        background-color: #eee;
+      }
+      body {
+        padding-top: 40px;
+      }
+      .container > footer p {
+        text-align: center;
+      }
+      .container {
+        width: 820px;
+      }
+      .content {
+        background-color: #fff;
+        padding: 20px;
+        margin: 0 -20px;
+        -webkit-border-radius: 0 0 6px 6px;
+           -moz-border-radius: 0 0 6px 6px;
+                border-radius: 0 0 6px 6px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+                box-shadow: 0 1px 2px rgba(0,0,0,.15);
+      }
+      .page-header {
+        background-color: #ff6600;
+        padding: 20px 20px 10px;
+        margin: -20px -20px 20px;
+      }
+      .topbar .btn {
+        border: 0;
+      }
+    </style>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <ul class="nav">
+            <li><a href="#">Flacker News</a></li>
+            <li><a href="#new">New</a></li>
+            <li><a href="#comment">Comments</a></li>
+            {% if session.logged_in %}
+              <li><a href="#submit">Submit</a></li>
+            {% else %}
+              <li><a href="#signup">Sign Up</a></li>
+            {% endif %}
+          </ul>
+          {% if session.logged_in %}
+            <a href="#profile">{% session.username %}</a>({% session.username.get_karma %})
+          {% else %}
+            <form action="" class="pull-right">
+              <input class="input-small" type="text" placeholder="Username">
+              <input class="input-small" type="password" placeholder="Password">
+              <button class="btn" type="submit">Sign in</button>
+            </form>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="content">
+        <div class="row">
+          <div class="span14">
+            {% block main_content %}{% endblock %}
+          </div>
+        </div>
+      </div>
+      <footer>
+        <p><a href="#about">About</a> | <a href="#faq">FAQ</a> | <a href="#contact">Contact</a>
+        <p>&copy; Flacker News 2011</p>
+      </footer>
+    </div> <!-- /container -->
+  </body>
+</html>
