@@ -8,13 +8,13 @@ readme = f.read()
 f.close()
 
 setup(
-    name='django-news',
+    name='flacker-news',
     version=".".join(map(str, VERSION)),
-    description='rss feed aggregation with django',
+    description='Hacker News clone written in python.',
     long_description=readme,
-    author='Charles Leifer',
-    author_email='coleifer@gmail.com',
-    url='http://github.com/coleifer/django-news/tree/master',
+    author='Josh Finnie',
+    author_email='josh.finnie@gmail.com',
+    url='https://github.com/joshfinnie/Flacker-News',
     packages=find_packages(),
     package_data = {
         'flaker-news': [
